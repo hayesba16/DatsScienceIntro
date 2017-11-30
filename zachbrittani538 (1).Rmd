@@ -1,0 +1,44 @@
+---
+title: "FiveThirtyEight.Rmd"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+```{r}
+library(tidyverse)
+library(fivethirtyeight)
+```
+
+```{r}
+head(flying)
+```
+1) A one variable graph
+
+```{r}
+ggplot(data = flying, mapping = aes(x=recline_rude)) + 
+  geom_bar(fill = "blue", color = "black")
+```
+
+
+2) A two variable graph
+
+```{r}
+flying1 = subset(flying, !is.na(height))
+ggplot(data = flying1, mapping = aes(x=height, fill = recline_frequency)) + geom_bar()
+```
+
+
+3) A three or more variable graph
+
+```{r}
+ggplot(data = flying, mapping = aes(x=get_up, fill=gender)) + geom_bar()
+```
+
+
+
+
+
